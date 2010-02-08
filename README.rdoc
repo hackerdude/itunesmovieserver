@@ -21,12 +21,14 @@ And making a symbolic link in ~/Sites as follows:
 
 The regular pages are very basic. To visit the XML versions of the pages (the ones you point your roku to), visit:
 
-	http://your-server/movies?format=rss
+  http://your-server/movies?format=rss
 
 or
 
   http://your-server/movies/genres?format=rss
 
 (Again, you may have to adjust paths to match your locations)
+
+A customized version of Brian Lane's excellent homevideo project is in the roku directory, all zipped and modified so it uses these URLs. If you want to play with it, go to http://bitbucket.org/bcl/homevideo/ to get the sources. I have only made slight modifications so far.
 
 Have fun!
