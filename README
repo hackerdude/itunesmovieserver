@@ -1,0 +1,22 @@
+This is a little application that creates a media RSS of the Movie contents of your iTunes Music Library. It uses sqlite by default.
+
+It is very much a work in progress, where I hope to be able to stream the (non-DRM) content in my iTunes machine straight to my Roku on the other room.
+
+Simply start the server and visit the top level. If you see a list of videos, it means things worked. If not, play with the constants in the source (or create Options records) to match the settings (I'll be adding a config page soon) to point to the correct locations of things.
+
+This expects you to have added your Movies library as a symlink on Apache. I did that on my machine as follows:
+
+<Directory "/Users/david/Sites/">
+	Options Indexes MultiViews FollowSymLinks
+	AllowOverride None
+	Order allow,deny
+	Allow from all
+</Directory>
+
+And making a symbolic link in ~/Sites as follows:
+
+iTunesMovies -> ~/Music/iTunes/iTunes Music/Movies
+
+(Again, you may have to adjust paths to match your locations)
+
+Have fun!

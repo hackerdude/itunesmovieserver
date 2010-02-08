@@ -1,0 +1,25 @@
+xml.instruct!
+xml.rss "version" => "2.0" do #, "xmlns:media" => "http://search.yahoo.com/mrss/" do
+  xml.title   "Some Movies"
+  xml.descriptions "Some cool movies"
+  xml.link url_for(:controller=>'movies', :format=>'rss')
+
+  @movies.each do |movie|
+    xml.item do
+      xml.title   movie.name
+      xml.link    "href" => local_to_location(movie.location)
+      xml.id      movie.persistent_id
+      #xml.updated movie.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ"
+      #xml.author  { movie.name movie.author.name }
+      #xml.summary "Post summary"
+      #xml.content "type" => "html" do
+        #xml.text! render(:partial => "posts/post", :post => post)
+      #end
+      xml.enclosure :href=>local_to_location(movie.location)
+      #
+      #xml.media :content, :url=>local_to_location(movie.location)
+      #xml.media :title, movie.name
+    end unless ! in_library_location(movie.location)
+  end
+
+end
