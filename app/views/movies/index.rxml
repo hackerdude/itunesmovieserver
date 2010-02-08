@@ -15,10 +15,15 @@ xml.rss "version" => "2.0" do #, "xmlns:media" => "http://search.yahoo.com/mrss/
       #xml.content "type" => "html" do
         #xml.text! render(:partial => "posts/post", :post => post)
       #end
-      xml.enclosure :href=>local_to_location(movie.location)
+      xml.enclosure :href=>local_to_location(movie.location), :type=>'video/mp4' # TODO Type mapping
       #
       #xml.media :content, :url=>local_to_location(movie.location)
       #xml.media :title, movie.name
+      xml.media do |m|
+        m.streamFormat 'mp4'
+        m.streamQuality 'SD'
+        m.streamUrl local_to_location(movie.location)
+      end
     end unless ! in_library_location(movie.location)
   end
 
