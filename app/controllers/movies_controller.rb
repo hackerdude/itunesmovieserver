@@ -4,7 +4,20 @@ class MoviesController < ApplicationController
 
   def index
     parse_items
-    @movies = MovieItem.find(:all, :order=>[:name])
+    if params[:genre].nil?
+      @movies = MovieItem.find(:all, :order=>[:name])
+    else
+      @movies = MovieItem.find(:all, :conditions=>{:genre=>params[:genre]}, :order=>[:name])
+    end
+    respond_to do |format|
+      format.rss
+      format.html
+    end
+  end
+
+  def genres
+    parse_items
+    @genres = ActiveRecord::Base.connection.select_values("select distinct genre from movie_items order by genre")
     respond_to do |format|
       format.rss
       format.html

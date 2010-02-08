@@ -1,0 +1,10 @@
+xml.instruct!
+xml.categories do
+  xml.banner_ad :sd_img=>"http://rokudev.roku.com/rokudev/examples/videoplayer/images/missing.png", :hd_img=>"http://rokudev.roku.com/rokudev/examples/videoplayer/images/missing.png"
+@genres.each {|g|
+  xml.category :title=>g, :description=>"" do
+    xml.categoryLeaf :title=>g, :description=>"#{g} items", :feed=>url_for(:host=>"10.0.1.8:3000", :controller=>'movies', :genre=>g, :format=>"rss")
+  end unless g.nil?
+}
+end
+

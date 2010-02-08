@@ -1,0 +1,5 @@
+<ul>
+<%@genres.each{|g|%>
+  <li><%=link_to(g.nil? ? "<None>" : g, url_for(:controller=>'movies', :genre=>g))%></li>
+<%}%>
+</ul>
