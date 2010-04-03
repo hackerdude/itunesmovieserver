@@ -1,0 +1,18 @@
+body {
+  background-color: #bed7ff;
+  font-family: sans-serif;
+  font: Helvetica Verdana Arial;
+}
+
+#controls {
+  background-color: #37669d;
+  color: white;
+}
+
+#controls a {
+  color: lightyellow;
+}
+
+#controls a:visited {
+  color: yellow;
+}

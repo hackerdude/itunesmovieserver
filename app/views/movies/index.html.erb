@@ -15,6 +15,7 @@
     <span class="title"><%=movie.name%></span>
     <span class="genre"><%=movie.genre%></span>
     <span class="time"><%=movie.human_duration%></span>
+    <span class="download"><%=link_to 'Download', local_to_location(movie.location)%>
   </li>
 
 <%end%>

@@ -1,0 +1,11 @@
+<html>
+<head>
+	<title>Itunes movie server</title>
+	<link rel="alternate" type="application/rss+xml" title="ITunes Movies - Media RSS" href="<%=url_for(:action=>'index', :format=>'rss')%>">
+  <%=stylesheet_link_tag 'movieserver'%>
+</head>
+<body>
+  <%=yield%>
+</body>
+</html>
+
