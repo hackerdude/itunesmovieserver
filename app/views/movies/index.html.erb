@@ -1,7 +1,22 @@
 <%  %>
-<h2>Here are the Movies in your iTunes Library:</h2>
-<%@movies.each do |m|%>
+<div id="controls">
+  <h3>Menu</h3>
+  <ul>
+  <li><%=link_to 'Rebuild Movie List', :controller=>'settings', :action=>'rebuild'%></li>
+  </ul>
+</div>
 
-  <li><%=m.name%></li>
+<div id="movie_list">
+<h2>Here are the Movies in your iTunes Library:</h2>
+<ul>
+<%@movies.each_with_index do |movie,index|%>
+
+  <li class="movie_entry <%=index % 2 == 0 ? "even" : "odd"%>">
+    <span class="title"><%=movie.name%></span>
+    <span class="genre"><%=movie.genre%></span>
+    <span class="time"><%=movie.human_duration%></span>
+  </li>
 
 <%end%>
+</ul>
+</div>
