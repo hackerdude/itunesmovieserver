@@ -4,6 +4,17 @@ body {
   font: Helvetica Verdana Arial;
 }
 
+#player {
+  /* width: 852; height: 480; */
+  width: 640; height: 480;
+}
+
+#player_container {
+  position:fixed;
+  top: 10px; right: 10px;
+  border: 1px solid black;
+}
+
 #controls {
   background-color: #37669d;
   color: white;
@@ -15,4 +26,8 @@ body {
 
 #controls a:visited {
   color: yellow;
+}
+
+#movie_list {
+  margin-right: 640px;
 }

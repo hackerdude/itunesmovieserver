@@ -1,4 +1,3 @@
-<%  %>
 <div id="controls">
   <h3>Menu</h3>
   <ul>
@@ -6,18 +5,48 @@
   </ul>
 </div>
 
+<div id="player_container">
+  <div id="player"></div>
+  <div id="player_title"></div>
+</div>
+
 <div id="movie_list">
 <h2>Here are the Movies in your iTunes Library:</h2>
 <ul>
 <%@movies.each_with_index do |movie,index|%>
 
+<%if movie.genre != 'Podcast' %>
+
   <li class="movie_entry <%=index % 2 == 0 ? "even" : "odd"%>">
+    <span class="actions">
+      <%=link_to 'Download', local_to_location(movie.location)%>
+      <%=link_to 'Watch', local_to_location(movie.location), :class=>"watch_link", :alt=>h(movie.name)%>
+    </span>
     <span class="title"><%=movie.name%></span>
     <span class="genre"><%=movie.genre%></span>
     <span class="time"><%=movie.human_duration%></span>
-    <span class="download"><%=link_to 'Download', local_to_location(movie.location)%>
   </li>
 
 <%end%>
+
+<%end%>
 </ul>
+
+
+<script>
+$$('.watch_link').invoke('observe', 'click', function(e) {
+  var target = Event.element(e);
+  e.stop();
+  var title = target.getAttribute("alt");
+  $('player_title').innerHTML = title+" (loading)";
+  flowplayer("player", 'flowplayer/flowplayer-3.1.5.swf', 
+  { 
+    clip: {url: target.href, title: title},
+    onStart: function() {
+      $('player_title').innerHTML = title;
+    }
+  });
+});
+</script>
+
 </div>
