@@ -1,6 +1,7 @@
+require 'etc'
 
 module MoviesHelper
-  DEFAULT_MOVIES_PREFIX="http://#{ITunesLibraryParser.local_ip}/~david/iTunesMovies/"
+  DEFAULT_MOVIES_PREFIX="http://#{ITunesLibraryParser.local_ip}/~#{Etc.getpwuid.name}/iTunesMovies/"
 
   def local_to_location(value)
     movies_folder = "#{@parser.itunes_library_folder}Movies/"
